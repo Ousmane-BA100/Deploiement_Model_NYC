@@ -1,9 +1,17 @@
 import streamlit as st
 import requests
+import folium
+from streamlit_folium import st_folium
 
 # Configuration de l'interface Streamlit
 st.title("NYC Yellow Taxi Riding Prediction")
 st.markdown("### Prédiction du nombre de passagers pour les trajets de taxi à NYC.")
+
+# Carte interactive pour sélectionner un emplacement
+st.header("Choose a Pick-Up Place")
+m = folium.Map(location=[40.730610, -73.935242], zoom_start=12)  # NYC par défaut
+folium.Marker([40.730610, -73.935242], popup="Pick-Up Point").add_to(m)
+output = st_folium(m, width=700, height=500)
 
 # Entrées utilisateur : caractéristiques
 st.subheader("Paramètres d'entrée")
@@ -26,7 +34,7 @@ if st.button("Prédire le nombre de passagers"):
 
     # Envoyer les données à l'API Flask
     try:
-        response = requests.post("http://127.0.0.1:5000/predict", json=input_data)
+        response = requests.post("http://backend:5000/predict", json=input_data)
         if response.status_code == 200:
             result = response.json()
             prediction = result["prediction"]
