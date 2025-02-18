@@ -1,54 +1,57 @@
-```markdown
-# 🚖 NYC Yellow Taxi Riding Prediction
+# 🚖 NYC Yellow Taxi - Prédiction du Nombre de Passagers
 
-Ce projet permet de prédire le nombre de passagers pour les trajets de taxi à New York en utilisant un modèle de régression Random Forest entraîné avec PySpark.  
-L'application est composée d'un **backend (API Flask) 🖥️** et d'un **frontend (Streamlit) 🎨**.
+Bienvenue dans ce projet de **prédiction du nombre de passagers des taxis jaunes de New York** !  
+Nous utilisons un **modèle de régression Random Forest** entraîné avec **PySpark** pour estimer le nombre de passagers en fonction de divers paramètres.  
+
+L'architecture du projet est composée de deux parties principales :
+- 🖥️ **Backend** : Une API Flask qui héberge le modèle de prédiction.
+- 🎨 **Frontend** : Une interface Streamlit permettant aux utilisateurs de tester les prédictions.
 
 ---
 
 ## 📌 Table des matières
 
-1. [🔧 Prérequis](#prérequis)
-2. [📂 Structure du projet](#structure-du-projet)
-3. [📥 Installation](#installation)
-4. [🚀 Exécution](#exécution)
-5. [🖱️ Utilisation](#utilisation)
-6. [📡 API Endpoints](#api-endpoints)
-7. [🛠️ Technologies utilisées](#technologies-utilisées)
-8. [👨‍💻 Auteurs](#auteurs)
+1. [🔧 Prérequis](#prérequis)  
+2. [📂 Structure du projet](#structure-du-projet)  
+3. [📥 Installation](#installation)  
+4. [🚀 Exécution](#exécution)  
+5. [🖱️ Utilisation](#utilisation)  
+6. [📡 API Endpoints](#api-endpoints)  
+7. [🛠️ Technologies utilisées](#technologies-utilisées)  
+8. [👨‍💻 Auteurs](#auteurs)  
 
 ---
 
 ## 🔧 Prérequis
 
-Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
+Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 
-- 🐳 **Docker** : Pour exécuter les conteneurs.
-- 🛠️ **Docker Compose** : Pour gérer les services multi-conteneurs.
-- 🔗 **Git** : Pour cloner le dépôt.
+- 🐳 **Docker** → Pour exécuter les conteneurs.  
+- ⚙️ **Docker Compose** → Pour gérer plusieurs conteneurs en même temps.  
+- 🔗 **Git** → Pour cloner le dépôt et gérer les versions du projet.  
 
 ---
 
 ## 📂 Structure du projet
 
-Le projet est structuré comme suit :
+Le projet est organisé de la manière suivante :
 
 ```
 project/
-├── backend/
-│   ├── Dockerfile 📄
-│   ├── backend_api.py 🖥️
-│   ├── requirements.txt 📜
-│   ├── spark-3.5.3-bin-hadoop3.tgz 📦  # Fichier Spark
-│   └── random_forest_model/ 📁  # Dossier contenant le modèle
-├── frontend/
-│   ├── Dockerfile 📄
-│   ├── frontend.py 🎨
-│   └── requirements.txt 📜
-└── docker-compose.yml ⚙️
+├── backend/                 # Dossier du backend (API Flask)
+│   ├── Dockerfile 📄         # Dockerfile pour l'API
+│   ├── backend_api.py 🖥️      # Code source de l'API
+│   ├── requirements.txt 📜   # Dépendances Python
+│   ├── spark-3.5.3-bin-hadoop3.tgz 📦  # Archive Spark
+│   └── random_forest_model/ 📁  # Modèle de prédiction
+├── frontend/                # Dossier du frontend (Streamlit)
+│   ├── Dockerfile 📄         # Dockerfile pour le frontend
+│   ├── frontend.py 🎨        # Interface utilisateur
+│   └── requirements.txt 📜   # Dépendances Streamlit
+└── docker-compose.yml ⚙️     # Configuration Docker Compose
 ```
 
-🚨 **Ajoutez le fichier lourd dans `.gitignore` pour éviter de le pousser sur GitHub** :  
+🚨 **Ne poussez pas les fichiers lourds sur GitHub !** Ajoutez-les dans le fichier `.gitignore` pour éviter tout problème :
 
 📜 **Fichier `.gitignore`** :
 ```
@@ -59,20 +62,18 @@ backend/spark-3.5.3-bin-hadoop3.tgz
 
 ## 📥 Installation
 
-1. **Cloner le dépôt** 🛎️ :
+1. **Cloner le dépôt** 🛎️  
    ```bash
    git clone https://github.com/votre-utilisateur/NYC-Yellow-Taxi-Riding-Prediction.git
    cd NYC-Yellow-Taxi-Riding-Prediction
    ```
 
-2. **Construire les images Docker** 🏗️ :
-   - Le fichier `spark-3.5.3-bin-hadoop3.tgz` est inclus dans le dossier `backend`.
-   - Exécutez la commande suivante pour construire les images :
-     ```bash
-     docker-compose build
-     ```
+2. **Construire les images Docker** 🏗️  
+   Assurez-vous que le fichier `spark-3.5.3-bin-hadoop3.tgz` est bien présent dans le dossier `backend`, puis exécutez :  
+   ```bash
+   docker-compose build
+   ```
 
----
 
 ## 🚀 Exécution
 
